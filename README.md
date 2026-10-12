@@ -1,4 +1,4 @@
-# PPDiff: Preference-Guided Personalized Diffusion for Item Presentation in Image-based Recommendation
+# VDGRec: Visual Preference-Guided Diffusion Generation of Cover Images for Image-Based Item Recommendation
 
 
 
