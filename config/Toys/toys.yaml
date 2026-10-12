@@ -1,0 +1,31 @@
+data:
+  raw_data_dir: data/raw_data/Toys
+  processed_dir: data/processed/Toys
+  image_dir: pic/Toys
+
+  beauty5_file: Toys_and_Games_5.json
+  meta_file: meta_Toys_and_Games.json
+  ratings_file: ratings_Toys_and_Games.csv
+
+  output_sequences: user_item_sequences.json
+  output_item_info: item_info.json
+  output_train: train.json
+  output_test: test.json
+  output_statistics: statistics.json
+
+download:
+  max_workers: 4
+  max_retries: 5
+  timeout: 15
+  retry_delay: 2
+  image_size: 300
+
+filter:
+  max_users: 2000
+  min_seq_len: 5
+  max_seq_len: 15
+  random_seed: 42
+
+split:
+  leave_one_out: true
+  min_seq_len: 4

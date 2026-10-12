@@ -1,0 +1,115 @@
+data:
+  image_dir: pic/Sports
+  train_json: data/processed/Sports/train.json
+  test_json: data/processed/Sports/test.json
+  profiles_dir: data/processed/Sports/profiles_eval
+  mask_dir: pic/Sports_masks
+  clip_feat_cache: data/processed/Sports/item_clip_feats.pt
+  item_info_json: data/processed/Sports/item_info.json
+  text_feat_cache: data/processed/Sports/item_text_feats.pt
+
+vbpr:
+  dim: 64
+  lr: 1.0e-3
+  weight_decay: 1.0e-5
+  reg_lambda: 0.0
+  epochs: 100
+  batch_size: 1024
+  num_negatives: 4
+  seed: 42
+
+visualcf:
+  dim: 64
+  lr: 1.0e-3
+  weight_decay: 1.0e-5
+  reg_lambda: 0.0
+  epochs: 100
+  batch_size: 1024
+  num_negatives: 4
+  seed: 42
+
+freedom:
+  dim: 64
+  feat_embed_dim: 64
+  knn_k: 10
+  n_mm_layers: 1
+  n_ui_layers: 2
+  reg_weight: 1.0e-4
+  dropout: 0.8
+  lr: 1.0e-3
+  weight_decay: 0.0
+  epochs: 100
+  batch_size: 1024
+  num_negatives: 4
+  seed: 42
+
+bm3:
+  dim: 64
+  feat_embed_dim: 64
+  n_layers: 1
+  dropout: 0.5
+  cl_weight: 2.0
+  reg_weight: 0.1
+  lr: 1.0e-3
+  weight_decay: 0.0
+  epochs: 100
+  batch_size: 1024
+  seed: 42
+
+diffmm:
+  dim: 64
+  gnn_layer: 1
+  keepRate: 1.0
+  ris_lambda: 0.5
+  ris_adj_lambda: 0.2
+  temp: 0.5
+  ssl_reg: 1.0e-1
+  reg: 1.0e-5
+  e_loss: 0.01
+  rebuild_k: 1
+  steps: 5
+  dims: "[1000]"
+  d_emb_size: 10
+  lr: 1.0e-3
+  epochs: 60
+  batch_size: 1024
+  seed: 421
+
+mentor:
+  dim: 64
+  knn_k: 10
+  n_mm_layers: 1
+  mm_image_weight: 0.65
+  lr: 1.0e-4
+  reg_weight: 1.0e-3
+  align_weight: 0.1
+  mask_weight_f: 1.5
+  mask_weight_g: 1.0e-3
+  temp: 0.2
+  dropout: 0.5
+  epochs: 100
+  batch_size: 1024
+  seed: 421
+
+generate:
+  diffusion_config: config/Sports/diffusion.yaml
+  resume_checkpoint: checkpoints/sports/run_01/checkpoint_epoch_0030.pt
+  guidance_scale: 7.5
+  inference_steps: 50
+  image_size: 512
+  gen_cache_dir: outputs/sports/gen_cache
+  rand_condition: profile
+  sigma: 0.8
+  noise_mode: bg_corrupt
+  noise_colors: [[0, 0, 0], [0, 255, 255]]
+  noise_sigma: 0.5
+  noise_sigma_var: 1.0
+  noise_block_jitter: 0.25
+  noise_subject_scale: 0.6
+  noise_feather: 8
+
+eval:
+  num_eval_users: 50
+  num_negatives: 99
+  neg_pool_size: 1000
+  topk: [5, 10, 15, 20]

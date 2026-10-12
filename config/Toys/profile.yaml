@@ -1,0 +1,18 @@
+llm:
+  model: Qwen3-4B-Instruct-2507
+  mode: vllm
+  api_base: http://localhost:8800
+  api_key: sk-vllm-a3f7b2c9e1d45f680ab12cd34ef56789
+  device: cuda:1
+  temperature: 0.3
+  max_tokens: 512
+
+extractor:
+  item_info_path: data/processed/Toys/item_info.json
+  beauty5_path: data/raw_data/Toys/Toys_and_Games_5.json
+  train_json: data/processed/Toys/train.json
+  test_json: data/processed/Toys/test.json
+  output_dir: data/processed/Toys/profiles
+  eval_output_dir: data/processed/Toys/profiles_eval
+  max_workers: 1
+  max_users: null

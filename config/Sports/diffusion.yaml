@@ -1,0 +1,30 @@
+image_size: 512
+rating_threshold: 4.0
+guidance_scale: [5.5,7.5, 10.0,13.0]
+use_rating_threshold: false
+bpr_num_negatives: 4
+bpr_loss_weight: 0.1
+style_loss_weight: 2.0
+reg_loss_weight: 0.00001
+
+sd_model_path: /home/caijinwei/disk1/Hugging-Face/stable-diffusion-v1-5
+mask_dir: pic/Sports_masks
+
+unet:
+  freeze_strategy: cross_attn_only
+
+diffusion:
+  timesteps: 600
+
+trainer:
+  batch_size: 4
+  learning_rate: 2.0e-5
+  weight_decay: 0.0
+  epochs: 30
+  grad_clip: 1.0
+  save_interval: 10
+  num_workers: 2
+  device: cuda:0
+  seed: 42
+  output_dir: outputs/sports
+  checkpoint_dir: checkpoints/sports
