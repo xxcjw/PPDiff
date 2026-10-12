@@ -7,7 +7,7 @@ bpr_loss_weight: 0.1
 style_loss_weight: 2.0
 reg_loss_weight: 0.00001
 
-sd_model_path: /home/caijinwei/disk1/Hugging-Face/stable-diffusion-v1-5
+sd_model_path: /home/xxx/disk1/Hugging-Face/stable-diffusion-v1-5
 mask_dir: pic/Sports_masks
 
 unet:
