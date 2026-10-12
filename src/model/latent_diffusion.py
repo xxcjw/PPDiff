@@ -107,6 +107,7 @@ class LatentDiffusion(nn.Module):
         while len(alpha_t.shape) < len(noisy_latents.shape):
             alpha_t = alpha_t.unsqueeze(-1)
         x0_pred = (noisy_latents - torch.sqrt(1 - alpha_t) * model_output) / torch.sqrt(alpha_t)
+        loss_diff = F.mse_loss(model_output, noise, reduction="mean")
 
         if mask_bg is not None:
             mask_latent = mask_bg.expand_as(original_latents)
@@ -117,7 +118,7 @@ class LatentDiffusion(nn.Module):
                             f"mean={mask_bg.mean():.2f}")
             x0_pred = original_latents * (1 - mask_latent) + x0_pred * mask_latent
 
-        return {"x0_pred": x0_pred}
+        return {"x0_pred": x0_pred, "loss_diff": loss_diff}
 
     @torch.no_grad()
     def sample(
