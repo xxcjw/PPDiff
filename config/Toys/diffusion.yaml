@@ -1,0 +1,29 @@
+image_size: 512
+rating_threshold: 4.0
+use_rating_threshold: false
+guidance_scale: [7.5, 10.0]
+diff_loss_weight: 0.2
+style_loss_weight: [2.0]
+reg_loss_weight: 0.00001
+
+sd_model_path: /home/xxx/disk1/Hugging-Face/stable-diffusion-v1-5
+mask_dir: pic/Toys_masks
+
+unet:
+  freeze_strategy: cross_attn_only
+
+diffusion:
+  timesteps: 1000
+
+trainer:
+  batch_size: 2
+  learning_rate: 2.0e-5
+  weight_decay: 0.0
+  epochs: [30,45]
+  grad_clip: 1.0
+  save_interval: 10
+  num_workers: 2
+  device: cuda:0
+  seed: 42
+  output_dir: outputs/toys
+  checkpoint_dir: checkpoints/toys
